@@ -6,7 +6,10 @@ var tweetup  = {
           zoom: 10,
           center: new google.maps.LatLng(53.563032, 9.930034)
         },
-        markers = [{ lat: 53.550846, lng: 9.930549}, {lat: 53.575519, lng: 10.008655}];
+        markers = [
+          { lat: 53.550846, lng: 9.930549, id: 0},
+          {lat: 53.575519, lng: 10.008655, id: 1}
+        ];
 
     this.map = new google.maps.Map($("#map-canvas")[0], options);
     this.placeMarkers(markers);
@@ -26,7 +29,13 @@ var tweetup  = {
       position: new google.maps.LatLng(coordinates.lat, coordinates.lng),
       map: this.map,
       animation: google.maps.Animation.DROP,
-      title: 'Hello World!'
+      title: 'Hello World!',
+      id: coordinates.id
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+      $("#info-box span").html("lat: " + marker.position.A + " lon: " + marker.position.F + " id: " + marker.id );
+      $("#info-box").show();
     });
   },
 
