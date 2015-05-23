@@ -30,7 +30,7 @@ var tweetup  = {
   createCoordinates: function(twitterData) {
     var mapCoordinates = [];
     for (var i=0; i<twitterData.length; i++) {
-      mapCoordinates[i] = new google.maps.LatLng(twitterData[i].lat, twitterData[i].lng);
+      mapCoordinates[i] = new google.maps.LatLng(twitterData[i].lat, twitterData[i].lon);
     }
     return mapCoordinates;
   },
