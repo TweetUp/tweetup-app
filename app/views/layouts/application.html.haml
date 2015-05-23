@@ -19,6 +19,7 @@
       .errors__container
         = render 'layouts/messages'
       = yield
+    .container
       %footer.page__footer
         - if content_for? :footer
           = yield :footer

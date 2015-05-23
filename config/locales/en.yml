@@ -26,11 +26,11 @@
 
 en:
   brand:
-    name: 'TweetUp'
+    name: 'TweetUpStreet'
 
   emails:
     welcome:
-      subject: 'Welcome to TweetUp'
+      subject: 'Welcome to TweetUpStreet'
 
   auth:
     login:
