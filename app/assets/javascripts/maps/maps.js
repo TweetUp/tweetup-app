@@ -10,7 +10,7 @@ var tweetup  = {
     this.map = new google.maps.Map($("#map-canvas")[0], options);
 
     $.ajax({
-      url: "/tweets"
+      url: "/tweets.json"
     }).done(function(response) {
       markers = response;
 
