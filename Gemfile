@@ -78,6 +78,10 @@ gem 'sinatra', require: false
 gem 'addressable'
 gem 'settingslogic'
 
+gem 'tweetstream'
+gem 'dotenv'
+gem 'acts-as-taggable-on', '~> 3.4'
+
 group :development do
   # Docs
   gem 'sdoc', require: false    # bundle exec rake doc:rails
