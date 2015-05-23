@@ -11,7 +11,7 @@
   Tweet.create(
     tweet_id: "60218133838968012#{i}",
     text: '#tweetupapp Lorem ipsum dolor sit amet',
-    image_url: 'http://pbs.twimg.com/media/CFthKstWgAADBoT.jpg'
+    image_url: 'http://pbs.twimg.com/media/CFthKstWgAADBoT.jpg',
     lat: '53.55641',
     lon: '9.923058'
   )
