@@ -8,11 +8,6 @@ var tweetup  = {
         };
 
     this.map = new google.maps.Map($("#map-canvas")[0], options);
-
-    // var script2 = document.createElement('script');
-    // script2.type = 'text/javascript'; 
-    // script2.src = "https://maps.googleapis.com/maps/api/js" + '?key=AIzaSyB1ZZktWMg-Aiihtzmno8SNV_HPKj1yCHY' +  "&libraries=visualization&sensor=true_or_false";
-    // document.body.appendChild(script2);
     
     var markers = [
           { lat: 53.550846, lng: 9.930549, id: 0},
@@ -41,6 +36,7 @@ var tweetup  = {
 
     heatmap.setMap(this.map);
 
+    $("#filter a").on("click", tweetup.filter);
   },
 
   createCoordinates: function(twitterData) {
@@ -66,7 +62,6 @@ var tweetup  = {
       position: coordinates,
       map: this.map,
       animation: google.maps.Animation.DROP,
-      title: 'Hello World!',
       id: coordinates.id
     });
 
@@ -80,6 +75,14 @@ var tweetup  = {
     for (var i=0; i<allMarkers.length; i++) {
       this.addMarker(allMarkers[i]);
     }
+  },
+
+  filter: function(event) {
+    var filter = $(event.currentTarget),
+        filterId = filter.data();
+    filter.toggleClass("disabled");
+
+    event.preventDefault();
   }
 };
 

@@ -45,4 +45,6 @@ Rails.application.routes.draw do
   get 'robots.:format' => 'robots#index'
 
   root 'pages#home'
+
+  resources :tweets, only: :index
 end
