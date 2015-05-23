@@ -42,3 +42,7 @@ body {
   bottom: 15px;
   top: auto;
 }
+
+html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+
+
