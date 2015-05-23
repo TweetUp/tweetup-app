@@ -1,0 +1,9 @@
+%tr
+  %td
+    %span.date
+      = l(tweet.created_at, format: :short)
+    by
+    %span.author
+      John Doe
+    %br
+    = auto_link tweet.text, :html => { :target => '_blank' }
