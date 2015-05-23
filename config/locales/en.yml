@@ -150,6 +150,10 @@ en:
         edit:
           password: 'Leave blank unless updating password'
 
+  time:
+    formats:
+      short: "%d.%m.%Y - %H:%M"
+
     # Labels and hints examples
     # labels:
     #   defaults:

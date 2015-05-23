@@ -18,7 +18,7 @@ TweetStream.configure do |config|
   config.auth_method = :oauth
 end
 
-main_tag = 'tweetupapp'
+main_tag = 'tweetupstreet'
 
 daemon = TweetStream::Daemon.new('tracker',
   :log_output => true,

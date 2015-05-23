@@ -22,3 +22,6 @@
 # Ignore Sublime Text workspace files
 /*.sublime-workspace
 
+# other files
+database.yml
+app/assets/javascripts/.DS_Store
