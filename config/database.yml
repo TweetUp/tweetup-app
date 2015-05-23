@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: <%= Rails.application.config.settings.app_name %>_development
   pool: 5
-  username: heisam
+  username: Nikhila
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a

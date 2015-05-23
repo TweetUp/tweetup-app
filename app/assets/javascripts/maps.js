@@ -8,9 +8,24 @@ var map;
 
         map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
-        var markers = [{ lat: 53.550846, lng: 9.930549}, {lat: 53.575519, lng: 10.008655}];
+        var markers = [{ lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          {lat: 53.575519, lng: 10.008655},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549},
+          { lat: 53.550846, lng: 9.930549}];
 
         placeMarkers(markers);
+
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData
+        });
+        heatmap.setMap(map);
       }
 
       function loadScript() {
