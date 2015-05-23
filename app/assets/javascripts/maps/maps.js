@@ -5,38 +5,26 @@ var tweetup  = {
     var options = {
           zoom: 8,
           center: new google.maps.LatLng(53.563032, 9.930034)
-        };
+        }, markers, twitterCoordinates, heatmap;
 
     this.map = new google.maps.Map($("#map-canvas")[0], options);
-    
-    var markers = [
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          { lat: 53.550846, lng: 9.930549, id: 0},
-          {lat: 53.575519, lng: 10.008655, id: 1},
-          {lat: 53.575519, lng: 10.008655, id: 1}
-        ];
 
-    var twitterCoordinates = this.createCoordinates(markers);
-    this.placeMarkers(twitterCoordinates);
-    
-    var heatmap = new google.maps.visualization.HeatmapLayer({
-    data: twitterCoordinates
-    });
+    $.ajax({
+      url: "/tweets"
+    }).done(function(response) {
+      markers = response;
 
-    heatmap.setMap(this.map);
+      twitterCoordinates = this.createCoordinates(markers);
+      this.placeMarkers(twitterCoordinates);
 
-    $("#filter a").on("click", tweetup.filter);
+      heatmap = new google.maps.visualization.HeatmapLayer({
+        data: twitterCoordinates
+      });
+
+      heatmap.setMap(this.map);
+
+      $("#filter a").on("click", tweetup.filter);
+    }.bind(this));
   },
 
   createCoordinates: function(twitterData) {
@@ -54,7 +42,7 @@ var tweetup  = {
     script1.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp' + '?key=AIzaSyB1ZZktWMg-Aiihtzmno8SNV_HPKj1yCHY' +
         '&signed_in=true&callback=tweetup.initialize' + "&libraries=visualization&sensor=true_or_false";
     document.body.appendChild(script1);
-    
+
   },
 
   addMarker: function(coordinates) {
