@@ -30,7 +30,13 @@ var tweetup  = {
   createCoordinates: function(twitterData) {
     var mapCoordinates = [];
     for (var i=0; i<twitterData.length; i++) {
-      mapCoordinates[i] = new google.maps.LatLng(twitterData[i].lat, twitterData[i].lon);
+      mapCoordinates[i] = {
+        lat: twitterData[i].lat,
+        lon: twitterData[i].lon,
+        text: twitterData[i].text,
+        imageUrl: twitterData[i].image_url
+      };
+        // new google.maps.LatLng(
     }
     return mapCoordinates;
   },
@@ -47,14 +53,18 @@ var tweetup  = {
 
   addMarker: function(coordinates) {
     var marker = new google.maps.Marker({
-      position: coordinates,
+      position: new google.maps.LatLng(coordinates.lat, coordinates.lon),
       map: this.map,
       animation: google.maps.Animation.DROP,
-      id: coordinates.id
+      text: coordinates.text,
+      imageUrl: coordinates.imageUrl
     });
 
     google.maps.event.addListener(marker, 'click', function() {
-      $("#info-box span").html("lat: " + marker.position.A + " lon: " + marker.position.F + " id: " + marker.id );
+      var imageUrl = marker.imageUrl,
+          text = marker.text;
+      $("#info-box span").html(text);
+      $("#info-box img").attr("src", imageUrl);
       $("#info-box").show();
     });
   },
