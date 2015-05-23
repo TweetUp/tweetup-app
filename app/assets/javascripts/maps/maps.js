@@ -6,7 +6,7 @@ function initialize() {
     center: new google.maps.LatLng(53.563032, 9.930034)
   };
 
-  map = new google.maps.Map($("#map-canvas"),
+  map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
   var markers = [{ lat: 53.550846, lng: 9.930549}, {lat: 53.575519, lng: 10.008655}];
 
