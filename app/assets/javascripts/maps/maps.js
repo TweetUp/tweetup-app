@@ -13,6 +13,8 @@ var tweetup  = {
 
     this.map = new google.maps.Map($("#map-canvas")[0], options);
     this.placeMarkers(markers);
+
+    $("#filter a").on("click", tweetup.filter);
   },
 
   loadScript: function() {
@@ -29,7 +31,6 @@ var tweetup  = {
       position: new google.maps.LatLng(coordinates.lat, coordinates.lng),
       map: this.map,
       animation: google.maps.Animation.DROP,
-      title: 'Hello World!',
       id: coordinates.id
     });
 
@@ -43,6 +44,14 @@ var tweetup  = {
     for (var i=0; i<markers.length; i++) {
       this.addMarker(markers[i]);
     }
+  },
+
+  filter: function(event) {
+    var filter = $(event.currentTarget),
+        filterId = filter.data();
+    filter.toggleClass("disabled");
+
+    event.preventDefault();
   }
 };
 

@@ -1,0 +1,23 @@
+
+
+#filter {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  background-color: #fff;
+  margin: 15px 8px;
+
+  a {
+    display: block;
+    &.disabled {
+      opacity: 0.5;
+    }
+    &.street {
+      background-color: red;
+    }
+    &.dirt {
+     background-color: green;
+    }
+  }
+}
