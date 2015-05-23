@@ -27,9 +27,9 @@ daemon = TweetStream::Daemon.new('tracker',
 
 daemon.on_inited do
   ActiveRecord::Base.connection.reconnect!
-  ActiveRecord::Base.logger = Logger.new(
-    File.open(File.join(root, "log", "stream.log"), 'w+')
-  )
+  # ActiveRecord::Base.logger = Logger.new(
+  #   File.open(File.join(root, "log", "stream.log"), 'w+')
+  # )
 end
 
 daemon.on_error do |message|
