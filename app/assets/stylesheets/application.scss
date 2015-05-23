@@ -14,16 +14,13 @@
 @import "cards";
 @import "footer";
 @import "hacks";
+@import "info_box";
 
 // Plugins
 @import 'nprogress';
 @import 'nprogress-bootstrap';
 
 
-
-//
-// Minor Tweaks
-//
 
 // Padding to clear fixed nav
 body {
@@ -43,6 +40,14 @@ body {
   top: auto;
 }
 
-html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+.container {
+  position: relative;
+}
+
+#map-canvas {
+  height: 500px;
+  margin: 0;
+  padding: 0;
+}
 
 
