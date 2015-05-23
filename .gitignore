@@ -21,4 +21,4 @@
 
 # Ignore Sublime Text workspace files
 /*.sublime-workspace
-
+database.yml
