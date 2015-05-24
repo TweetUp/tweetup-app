@@ -4,6 +4,6 @@
       = l(tweet.created_at, format: :short)
     by
     %span.author
-      John Doe
+      = link_to(tweet.user_name, "https://twitter.com/#{tweet.user_screen_name}")
     %br
     = auto_link tweet.text, :html => { :target => '_blank' }
