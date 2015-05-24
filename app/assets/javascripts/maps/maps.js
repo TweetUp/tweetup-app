@@ -5,17 +5,18 @@ var tweetup  = {
     var options = {
           zoom: 8,
           center: new google.maps.LatLng(53.563032, 9.930034)
-        }, markers, twitterCoordinates, heatmap;
+        }, twitterData, twitterCoordinates, heatmap;
 
     this.map = new google.maps.Map($("#map-canvas")[0], options);
 
     $.ajax({
       url: "/tweets.json"
     }).done(function(response) {
-      markers = response;
+      twitterData = response;
 
-      twitterCoordinates = this.createCoordinates(markers);
-      this.placeMarkers(twitterCoordinates);
+      twitterCoordinates = this.createCoordinates(twitterData);
+
+      this.placeMarkers(response);
 
       heatmap = new google.maps.visualization.HeatmapLayer({
         data: twitterCoordinates
@@ -24,6 +25,13 @@ var tweetup  = {
       heatmap.setMap(this.map);
 
       $("#filter a").on("click", tweetup.filter);
+
+      $.ajax({
+        url: "/tweets"
+      }).done(function(response) {
+        $("#twitter-feed").html(response);
+      });
+
     }.bind(this));
   },
 
@@ -32,11 +40,8 @@ var tweetup  = {
     for (var i=0; i<twitterData.length; i++) {
       mapCoordinates[i] = {
         lat: twitterData[i].lat,
-        lon: twitterData[i].lon,
-        text: twitterData[i].text,
-        imageUrl: twitterData[i].image_url
+        lon: twitterData[i].lon
       };
-        // new google.maps.LatLng(
     }
     return mapCoordinates;
   },
@@ -51,13 +56,13 @@ var tweetup  = {
 
   },
 
-  addMarker: function(coordinates) {
+  addMarker: function(data) {
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(coordinates.lat, coordinates.lon),
-      map: this.map,
+      position:  new google.maps.LatLng(data.lat, data.lon),
+      map:       this.map,
       animation: google.maps.Animation.DROP,
-      text: coordinates.text,
-      imageUrl: coordinates.imageUrl
+      text:      data.text,
+      imageUrl:  data.image_url
     });
 
     google.maps.event.addListener(marker, 'click', function() {
