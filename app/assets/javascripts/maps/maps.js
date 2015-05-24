@@ -1,8 +1,8 @@
 var tweetup  = {
 
   initialize: function() {
-    var lat = 63.563032,
-        lon = 9.930034;
+    var lat = 53.556866,
+        lon = 9.923450;
 
     if (navigator.geolocation) {
       var position = navigator.geolocation.getCurrentPosition(function (position) {
