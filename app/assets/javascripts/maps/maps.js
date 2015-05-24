@@ -103,6 +103,7 @@ var tweetup  = {
       $.ajax({
         url: "/tweets"
       }).done(function(response) {
+        // display the first 4 tweets
         $("#twitter-feed").html(response);
       });
 
