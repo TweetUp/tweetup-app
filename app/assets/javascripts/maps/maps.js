@@ -62,7 +62,7 @@ var tweetup  = {
   },
 
   placeMarkers: function(allMarkers) {
-    var myIcon = new google.maps.MarkerImage("marker.png", null, null, null, new google.maps.Size(27,23));
+    var myIcon = new google.maps.MarkerImage("marker2.png", null, null, null, new google.maps.Size(27,23));
     for (var i=0; i<allMarkers.length; i++) {
       this.addMarker(allMarkers[i], myIcon);
     }
