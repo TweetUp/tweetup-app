@@ -48,19 +48,30 @@ body {
 
 #map-canvas {
   height: 500px;
-  width: 70%;
+  width: 75%;
   margin-left: 5px;
   float: left;
 }
 
+#twitter {
+  float: right;
+  width: 20%;
+}
+
+#twitter-logo {
+  display: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  height: 39px;
+}
+
 #twitter-feed {
-  height: 500px;
-  width: 25%;
+  height: 419px;
   margin-left: 5px;
   margin-right: 5px;
-  float: right;
-  border: 1px solid black;
-
+  border: 4px solid #55acee;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
 
