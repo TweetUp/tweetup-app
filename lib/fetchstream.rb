@@ -50,7 +50,9 @@ daemon.track([main_tag]) do |tweet|
     text: tweet.text,
     image_url: tweet.media.first.try(:media_url).try(:to_s),
     lat: tweet.geo.coordinates.first,
-    lon: tweet.geo.coordinates.last
+    lon: tweet.geo.coordinates.last,
+    user_name: tweet.user.name,
+    user_screen_name: tweet.user.screen_name
   })
   tags = tweet.hashtags.map(&:text)
   tags.delete(main_tag)

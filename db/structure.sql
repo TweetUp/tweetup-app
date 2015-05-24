@@ -202,7 +202,9 @@ CREATE TABLE tweets (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     lat character varying(255),
-    lon character varying(255)
+    lon character varying(255),
+    user_name character varying(255),
+    user_screen_name character varying(255)
 );
 
 
@@ -467,4 +469,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150523151047');
 INSERT INTO schema_migrations (version) VALUES ('20150523151048');
 
 INSERT INTO schema_migrations (version) VALUES ('20150523155327');
+
+INSERT INTO schema_migrations (version) VALUES ('20150524073627');
 
