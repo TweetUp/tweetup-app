@@ -6,7 +6,7 @@ var tweetup  = {
 
     if (navigator.geolocation) {
       var position = navigator.geolocation.getCurrentPosition(function (position) {
-        if (position) {
+        if (position && position.coords) {
           lat = position.coords.latitude;
           lon = position.coords.longitude;
           this.showMap(lat, lon);
