@@ -10,14 +10,10 @@ var tweetup  = {
           lat = position.coords.latitude;
           lon = position.coords.longitude;
           this.showMap(lat, lon);
-        } else {
-          this.showMap(lat, lon);
         }
       }.bind(this));
-    } else {
-      this.showMap(lat, lon);
     }
-
+    this.showMap(lat, lon);
   },
 
   createCoordinates: function(twitterData) {
