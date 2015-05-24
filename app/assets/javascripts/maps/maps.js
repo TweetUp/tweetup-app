@@ -41,14 +41,15 @@ var tweetup  = {
 
   },
 
-  addMarker: function(data) {
+  addMarker: function(data, icon) {
+
     var marker = new google.maps.Marker({
       position:  new google.maps.LatLng(data.lat, data.lon),
       map:       this.map,
       animation: google.maps.Animation.DROP,
       text:      data.text,
       imageUrl:  data.image_url,
-      icon: "marker.png"
+      icon: icon
     });
 
     google.maps.event.addListener(marker, 'click', function() {
@@ -61,8 +62,9 @@ var tweetup  = {
   },
 
   placeMarkers: function(allMarkers) {
+    var myIcon = new google.maps.MarkerImage("marker.png", null, null, null, new google.maps.Size(27,23));
     for (var i=0; i<allMarkers.length; i++) {
-      this.addMarker(allMarkers[i]);
+      this.addMarker(allMarkers[i], myIcon);
     }
   },
 
