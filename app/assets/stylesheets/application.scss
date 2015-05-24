@@ -26,7 +26,7 @@
 
 // Padding to clear fixed nav
 body {
-  padding-top: 70px;
+  padding-top: 100px;
 }
 
 // Make sure alerts are nicely formatted
@@ -82,8 +82,9 @@ body {
 }
 
 .navbar-brand {
+  font-size: 32px !important;
   img {
-    margin: -12px 0 0 0;
+    margin: -15px 0 0 0;
   }
 }
 
