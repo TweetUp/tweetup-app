@@ -72,6 +72,13 @@ body {
   border: 4px solid #55acee;
   border-radius: 10px;
   font-size: 12px;
+
+  tr {
+    display: none;
+  }
+  tr:nth-child(-n+4){
+    display:block;
+}
 }
 
 .navbar-brand {
