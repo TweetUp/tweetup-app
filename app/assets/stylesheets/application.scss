@@ -74,5 +74,12 @@ body {
   font-size: 12px;
 }
 
+.navbar-brand {
+  img {
+    margin: -12px 0 0 0;
+  }
+}
 
 
+// And finally bootswatch style itself
+@import "bootswatch/paper/bootswatch";
