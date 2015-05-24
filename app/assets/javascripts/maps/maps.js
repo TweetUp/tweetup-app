@@ -96,7 +96,7 @@ var tweetup  = {
 
       heatmap = new google.maps.visualization.HeatmapLayer({
         data: twitterCoordinates,
-        radius: 30
+        radius: 15
       });
 
       heatmap.setMap(this.map);
