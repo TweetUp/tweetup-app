@@ -6,7 +6,7 @@ var tweetup  = {
 
     if (navigator.geolocation) {
       var position = navigator.geolocation.getCurrentPosition(function (position) {
-        if (position) {
+        if (position && position.coords) {
           lat = position.coords.latitude;
           lon = position.coords.longitude;
           this.showMap(lat, lon);
@@ -41,13 +41,15 @@ var tweetup  = {
 
   },
 
-  addMarker: function(data) {
+  addMarker: function(data, icon) {
+
     var marker = new google.maps.Marker({
       position:  new google.maps.LatLng(data.lat, data.lon),
       map:       this.map,
       animation: google.maps.Animation.DROP,
       text:      data.text,
-      imageUrl:  data.image_url
+      imageUrl:  data.image_url,
+      icon: icon
     });
 
     google.maps.event.addListener(marker, 'click', function() {
@@ -60,8 +62,9 @@ var tweetup  = {
   },
 
   placeMarkers: function(allMarkers) {
+    var myIcon = new google.maps.MarkerImage("marker.png", null, null, null, new google.maps.Size(27,23));
     for (var i=0; i<allMarkers.length; i++) {
-      this.addMarker(allMarkers[i]);
+      this.addMarker(allMarkers[i], myIcon);
     }
   },
 
