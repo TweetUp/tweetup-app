@@ -15,6 +15,11 @@ $grid-gutter-width: 20px;
 // This effects when the topnav collapses.
 $grid-float-breakpoint: 480px;
 
+$navbar-inverse-color: white;
+$navbar-inverse-link-color: white;
+$navbar-inverse-bg: gray;
+// $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
+
 // Import bootstrap variables to make all variables available from this file.
 // Useful for situations where only this file is imported.
 @import "bootstrap/variables";

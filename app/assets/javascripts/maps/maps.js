@@ -1,38 +1,23 @@
 var tweetup  = {
 
   initialize: function() {
-    // general map options
-    var options = {
-          zoom: 8,
-          center: new google.maps.LatLng(53.563032, 9.930034)
-        }, twitterData, twitterCoordinates, heatmap;
+    var lat = 63.563032,
+        lon = 9.930034;
 
-    this.map = new google.maps.Map($("#map-canvas")[0], options);
+    if (navigator.geolocation) {
+      var position = navigator.geolocation.getCurrentPosition(function (position) {
+        if (position) {
+          lat = position.coords.latitude;
+          lon = position.coords.longitude;
+          this.showMap(lat, lon);
+        } else {
+          this.showMap(lat, lon);
+        }
+      }.bind(this));
+    } else {
+      this.showMap(lat, lon);
+    }
 
-    $.ajax({
-      url: "/tweets.json"
-    }).done(function(response) {
-      twitterData = response;
-
-      twitterCoordinates = this.createCoordinates(twitterData);
-
-      this.placeMarkers(response);
-
-      heatmap = new google.maps.visualization.HeatmapLayer({
-        data: twitterCoordinates
-      });
-
-      heatmap.setMap(this.map);
-
-      $("#filter a").on("click", tweetup.filter);
-
-      $.ajax({
-        url: "/tweets"
-      }).done(function(response) {
-        $("#twitter-feed").html(response);
-      });
-
-    }.bind(this));
   },
 
   createCoordinates: function(twitterData) {
@@ -87,7 +72,46 @@ var tweetup  = {
     filter.toggleClass("disabled");
 
     event.preventDefault();
+  },
+
+  showMap: function(lat, lon) {
+    var options = {
+          zoom: 15,
+          center: new google.maps.LatLng(lat, lon)
+        },
+        twitterData, twitterCoordinates, heatmap;
+
+    this.map = new google.maps.Map($("#map-canvas")[0], options);
+
+    // add marker
+    $.ajax({
+      url: "/tweets.json"
+    }).done(function(response) {
+      twitterData = response;
+
+      twitterCoordinates = this.createCoordinates(twitterData);
+
+      this.placeMarkers(response);
+
+      heatmap = new google.maps.visualization.HeatmapLayer({
+        data: twitterCoordinates
+      });
+
+      heatmap.setMap(this.map);
+
+      $("#filter a").on("click", tweetup.filter);
+
+      $.ajax({
+        url: "/tweets"
+      }).done(function(response) {
+        // display the first 4 tweets
+        $("#twitter-feed").html(response);
+      });
+
+    }.bind(this));
+
   }
+
 };
 
 window.onload = tweetup.loadScript();
