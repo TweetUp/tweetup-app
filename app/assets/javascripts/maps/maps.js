@@ -24,8 +24,7 @@ var tweetup  = {
     var mapCoordinates = [];
     for (var i=0; i<twitterData.length; i++) {
       mapCoordinates[i] = {
-        location: new google.maps.LatLng(twitterData[i].lat, twitterData[i].lon),
-        weight: 2
+        location: new google.maps.LatLng(twitterData[i].lat, twitterData[i].lon)
       };
     }
     return mapCoordinates;
@@ -96,7 +95,8 @@ var tweetup  = {
       this.placeMarkers(response);
 
       heatmap = new google.maps.visualization.HeatmapLayer({
-        data: twitterCoordinates
+        data: twitterCoordinates,
+        radius: 30
       });
 
       heatmap.setMap(this.map);
