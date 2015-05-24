@@ -410,6 +410,7 @@ DEPENDENCIES
   dotenv
   factory_girl_rails
   ffaker
+  font-awesome-rails
   guard-rspec
   haml-rails
   headjs-rails

@@ -83,6 +83,7 @@ gem 'dotenv'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails_autolink'
 gem 'bootswatch-rails'
+gem 'font-awesome-rails'
 
 group :development do
   # Docs
