@@ -24,8 +24,8 @@ var tweetup  = {
     var mapCoordinates = [];
     for (var i=0; i<twitterData.length; i++) {
       mapCoordinates[i] = {
-        lat: twitterData[i].lat,
-        lon: twitterData[i].lon
+        location: new google.maps.LatLng(twitterData[i].lat, twitterData[i].lon),
+        weight: 2
       };
     }
     return mapCoordinates;
