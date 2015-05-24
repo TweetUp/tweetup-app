@@ -62,7 +62,8 @@ var tweetup  = {
       map:       this.map,
       animation: google.maps.Animation.DROP,
       text:      data.text,
-      imageUrl:  data.image_url
+      imageUrl:  data.image_url,
+      icon: "marker.png"
     });
 
     google.maps.event.addListener(marker, 'click', function() {
